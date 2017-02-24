@@ -1,14 +1,17 @@
 # Street View House Numbers
 
-**The project consists of multiple steps:**
+## Code
 
-1. Get familiar with the theoretical foundations of the Convolutional Neural Networks and implement a simple convolutional network on a single-digit MNIST dataset (notebook `1. Neural net MNIST 1 digit`).
-2. Create a sequence of MNIST digits and implement a convolutional network on a multi-digit MNIST dataset (notebooks `2. Create MNIST digit sequences` and `3. Neural net MNIST sequence`).
-3. Download, analyse and modify the SVHN dataset (notebook `4. Download & reformat SVHN data`).
-4. Implement a convolutional neural network on a multi-digit SVHN dataset (notebook `5. Neural net SVHN sequence`).
-5. Make predictions for new house numbers (notebook `6. New predictions SVHN dataset`).
+- `1. Neural net MNIST 1 digit`. Get familiar with the theoretical foundations of the Convolutional Neural Networks and implement a simple convolutional network on a single-digit MNIST dataset.
+- `2. Create MNIST digit sequences`. Create a sequence of MNIST digits.
+- `3. Neural net MNIST sequence`. Implement a convolutional network on a multi-digit MNIST dataset.
+- `4. Download & reformat SVHN data`. Download, analyse and modify the SVHN dataset.
+- `5. Neural net SVHN sequence`. Implement a convolutional neural network on a multi-digit SVHN dataset.
+- `6. New predictions SVHN dataset`. Make predictions for new house numbers.
 
 Functions for downloading and extracting data can be found in `helper_functions.py` file.
+
+## Folders
 
 If you want to be able to run all the scripts without errors, your `digit recognition` folder should include the following folders:
 - data (not included in the git repository)
@@ -17,7 +20,7 @@ If you want to be able to run all the scripts without errors, your `digit recogn
 - pickels (not included in the git repository)
 - scripts_notebooks
 
-# Important
+## Important
 
 `4. Download & reformat SVHN data` automatically downloads and extracts the required data into `data` folder (it may take a while):
 - Training set ([train.tar.gz](http://ufldl.stanford.edu/housenumbers/train.tar.gz))
