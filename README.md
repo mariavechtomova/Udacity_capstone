@@ -42,7 +42,6 @@ This project requires **Python 2.7** and the following Python libraries installe
 - [matplotlib](http://matplotlib.org/)
 - [scikit-learn](http://scikit-learn.org/stable/)
 - [SciPy library](http://www.scipy.org/scipylib/index.html)
-- [Six](http://pypi.python.org/pypi/six/)
 - [PIL](https://pypi.python.org/pypi/PIL)
 
 You will also need to have [iPython Notebook](http://ipython.org/notebook.html) installed to run and execute code
