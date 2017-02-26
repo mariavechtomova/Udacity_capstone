@@ -36,6 +36,10 @@ I will be using the same definition of accuracy in the project. Dummy code for d
 	def accuracy(prediction,true_lables):
 		return (np.sum([np.min for a in prediction == true_lables])/len(prediction)
 
+Another metrics we could consider would be accuracy based on number correctly predicted digits. For instance, if we have two house numbers 90 and 567 and our model predicts 80 and 561 instead, we would say that we predicted 3 out of 5 digits correctly, therefore have accuracy of 60%.
+
+However, this would not be a logical approach. The model can be used for automatic map generation, and if at lease 1 digit in a number is wrong, it would cause a lot of misunderstanding. While using accuracy metrics defined above, we say that house number is accurate only if all digits in the sequence are predicted correctly. In the example above we would therefore get accuracy of 0%, what is completely justified.
+
 ### II. Analysis
 #### II.1. Data exploration
 In this project two different datasets were used: MNIST dataset (which was loaded directly from tensorflow) and SVHN dataset (from http://ufldl.stanford.edu/housenumbers/).
@@ -242,22 +246,29 @@ After the transformation is done, we can feed it into model saved in notebook `5
 
 ![](https://raw.githubusercontent.com/mariavechtomova/Udacity_capstone/master/digit_recognition/images/svhn_sample_pred_results.png) 
 
-#### III.2. Reflections
+#### III.2. Justification
+
+As I mentioned above, the final model has accuracy 82,5% on the test set, which falls within the benchmark of 80-85% I established earlier. The purpose of the project was not to build a model which can be perfectly used for house number recognition in Google maps, but to learn how this kind of models can be built and what kind of techniques the stated problem requires. For this purpose the model result is perfectly fine. However, the model would need improvement if we really want to solve the problem of house number recognition (this would require human accuracy (around 98%). This would require much more time and computing resources.
+
+
+#### III.3. Reflections
 
 This project was an important step for me to get understanding of Convolutional Neural Networks and how this algorithm can be used to solve the problems of image recognition. 
 
 I learned the logics and theory behind the algorithm and adapted the theory on the real-world problem. The model is built with one of the most advanced opensourced ML libraries (Tensorlow), which makes it quite easy for a data scientist to works with neural networks. Layers can be constructed in a clear logical way, what helps you to concentrate on the model quality rather than complexity of coding.
 
-I also learned the basics of image transformations in Python and understood the importance of it while working with image recognition problems. The quality of your model can change drastically when you choose for the right way to transform the input pictures. SVHN dataset had bounding boxes available, what helped a lot with image processing. I also "cheated" by assuming that this information is known while making predictions for random pictures in the end.
+I also learned the basics of image transformations in Python and understood the importance of it while working with image recognition problems. The quality of your model can change drastically when you choose for the right way to transform the input pictures. SVHN dataset had bounding boxes available, what helped a lot with image processing. I also "cheated" by assuming that this information is known while making predictions for random pictures in the end. However, the bounding boxes can be added to real pictures by using some libraries like OpenCV. This means that my code would also work on any picture of house number taken from someone's mobile camera if we add an OpenCV step to it.
 
-However, the bounding boxes can be added to real pictures by using some libraries like OpenCV. This means that my code would also work on any picture of house number taken from someone's mobile camera if we add an OpenCV step to it.
-
-My model in the end is not a perfect model. It has accuracy of 82,5%, overfits  and makes some obvious mistakes (like shown above). The model could get better if we adjust model architecture by adding more convolutional layers, add L2 regularization and use Decay Learning Rate.
-
-These improvements are relatively easy to implement, but it is not
+My model in the end is not a perfect model. It has accuracy of 82,5%, overfits  and makes some obvious mistakes (like shown above). The model could get better if we adjust model architecture by adding more convolutional layers, add L2 regularization and use Decay Learning Rate. These improvements are relatively easy to implement, but it is not
 so easy to evaluate their improvement in the final performance. This is basically because
 each training stage of 100k steps is not cheap at all and takes time and computation
 resources.
+
+The project I chose was quite challenging for me and I learned a lot. I was "stuck" in some places like getting metadata for SVHN dataset (never worked with Matlab data files before), understanding the bounding boxes (what "top", "left","right","bottom"  exactly means) and it took me some time to figure it out. It was interesting to understand how images are represented and how you can modify the images by manipulating values in arrays that represent the image in different wats (gave me some feeling about how image editors work).
+
+I was somehow familiar with Neural network algorithm before (but was always applying it to more standard datasets), so it was not that challenging to understand the fully connected layer part of CNN's. Convolutional layer had to do a lot with image transformations that I learned during the project and in the end it all seemed intuitive to me.  Interesting part in CNN's was understanding that if you add extra factor (like sequence length) as a factor that model has to predict, the model gets better. Tweaking the model was also quite challenging and time-consuming.
+
+In the end I am happy I've done the project and am able to apply the knowledge to other problems I may face (for instance, crowd-recognition).
 
 
 ### References
